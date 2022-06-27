@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Netflix</title>
+  </head>
+  <body>
+    <header>
+    <a href="#" class="logo"><img src="images/netflixLogo.jpg"></a>
+    <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Tv Shows</a></li>
+        <li><a href="#">Movies</a></li>
+        <li><a href="#">Latest</a></li>
+        <li><a href="#">My List</a></li>
+    </ul>
+    <div class="search">
+        <input type="text" placeholder="Search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+    <script>
+      function toggleVideo(){
+        const trailer = document.querySelector('.trailer');
+        trailer.classList.toggle('active');
+        trailer.currentTime = 0;
+        trailer.pause();
+      }
+    </script>
+    </header>
+    <div class="banner">
+        <img src="images/BackgroundForMovie.jpg" class="bg"/>
+        <div class="content">
+          <img src="images/name.png"class="movieTitle">
+          <h4>
+            <span>Action Adventure Sci-Fi</span>
+            <span><i>9+</i></span>
+            <span>2h 4min</span>
+            <span>1980</span>
+          </h4>
+          <p>
+            After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, 
+            Luke Skywalker begins Jedi training with Yoda, 
+            while his friends are pursued across the galaxy by Darth Vader and bounty hunter Boba Fett.
+          </p>
+          <div class="buttons">
+            <a href="#"><i class="fa fa-play" aria-hidden="true"> Play</i></a>
+            <a href="#"><i class="fa fa-plus" aria-hidden="true"> My List</i></a>
+          </div>
+        </div>
+        <a href="#" class="play" onclick="toggleVideo();"><img src="images/playbutton.png">Watch Trailer</a>
+    </div>
+    <div class="trailer">
+      <video src="images/trailer.mp4" controls="true" autoplay="true"></video>
+      <img src="images/close.png" class="close"  onclick="toggleVideo();">
+      
+    </div>
+   
+    <div class="carousel">
+      <div class="carouselbox">
+
+      </div>
+      <a class="switchLeft sliderButton" onclick="sliderScrollLeft()"><</a>
+      <a class="switchRight sliderButton" onclick="sliderScrollRight()">></a>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="carousel.js"></script>
+  </body>
+</html>
