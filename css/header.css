@@ -33,6 +33,9 @@ header .logo img {
     max-width: 150px;
 }
 
+h2 {
+    color: #fff;
+}
 .navigation {
     display: flex;
 }
@@ -328,7 +331,7 @@ header .logo img {
     height: 160px;
     background-size: cover;
     background-color: lightgreen;
-    margin: 5px 10px;
+    margin: 5px 2px;
     cursor: pointer;
     transition: 0.5s ease;
     z-index: 2;
