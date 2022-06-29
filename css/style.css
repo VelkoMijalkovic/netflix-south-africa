@@ -333,7 +333,7 @@ hr {
     margin-bottom: 1.5rem;
 }
 
-.footer .footer-cols{
+.footer .ftr-content{
     display: grid;
     grid-template-columns: repeat(4 , 1fr);
     grid-gap: 2rem;

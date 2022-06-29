@@ -120,33 +120,17 @@
 
     <footer class="footer">
         <p>Questions? Call 000-800-040-1843</p>
-        <div class="footer-cols">
-            <ul>
-                <li v-for="x in faqList1">
-                    <a v-bind:href="'#'+x.href">{{ x }}</a>
-                  </li>
-            </ul>
-            <ul>
-                <li v-for="x in faqList2">
-                    <a v-bind:href="'#'+x.href">{{ x }}</a>
-                  </li>
-            </ul>
-            <ul>
-                <li v-for="x in faqList3">
-                    <a v-bind:href="'#'+x.href">{{ x }}</a>
-                  </li>
-            </ul>
-            <ul>
-                <li v-for="x in faqList4">
-                    <a v-bind:href="'#'+x.href">{{ x }}</a>
-                  </li>
-            </ul>
-        </div>
+        <faq></faq>
     </footer>
-    <script src="./src.js"></script>
-    <script>
-        app.mount('#app')
-      </script>
+    
+   
+    
 </div>
+
+<script src="./scripts/landingpage.js"></script>
+<script src="./components/faq.js"></script>
+<script>
+  app.mount('#app')
+</script>
 </body>
 </html>

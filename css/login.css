@@ -213,18 +213,17 @@ footer {
 }
 
 .ftr-content {
-	margin-left: 10%;
-	padding-top: 20px;
-	font-size: 1em;
+	display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    grid-gap: 2rem;
 }
 
 .ftr-content a {
 	color: #999;
 }
-
-.ftr-content a:hover {
-	text-decoration: underline;
-}
+ul li {
+    margin-bottom: 8px;
+  }
 
 .contact {
 	margin-bottom: 30px;

@@ -4,32 +4,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/header.css" />
     <meta charset="UTF-8">
+    
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
     <title>Netflix</title>
   </head>
-  <body>
+  <body id="app">
+    
     <header>
     <a href="#" class="logo"><img src="images/netflixLogo.jpg"></a>
     <ul class="navigation">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Tv Shows</a></li>
-        <li><a href="#">Movies</a></li>
-        <li><a href="#">Latest</a></li>
-        <li><a href="#">My List</a></li>
+      <li v-for="x in menu">
+        <a v-bind:href="'#'+x.href">{{ x }}</a>
+      </li>
     </ul>
     <div class="search">
         <input type="text" placeholder="Search">
         <i class="fa fa-search" aria-hidden="true"></i>
     </div>
-    <script>
-      function toggleVideo(){
-        const trailer = document.querySelector('.trailer');
-        trailer.classList.toggle('active');
-        trailer.currentTime = 0;
-        trailer.pause();
-      }
-    </script>
     </header>
     <div class="banner">
         <img src="images/BackgroundForMovie.jpg" class="bg"/>
@@ -51,23 +46,30 @@
             <a href="#"><i class="fa fa-plus" aria-hidden="true"> My List</i></a>
           </div>
         </div>
-        <a href="#" class="play" onclick="toggleVideo();"><img src="images/playbutton.png">Watch Trailer</a>
+        <a href="#" class="play" @click="isActive = !isActive"><img src="images/playbutton.png">Watch Trailer</a>
     </div>
-    <div class="trailer">
-      <video src="images/trailer.mp4" controls="true" autoplay="true"></video>
-      <img src="images/close.png" class="close"  onclick="toggleVideo();">
+    <div v-if="isActive" :class="{trailer : isActive}">
+      <video src="images/trailer.mp4" controls="true" autoplay="false"></video>
+      <img @click="isActive = !isActive" src="images/close.png" class="close">
       
     </div>
    
     <div class="carousel">
       <h2>New Arrivals</h2>
-      <div class="carouselbox">
-
+      <div class="carouselbox" id="latest">
+        
       </div>
-      <a class="switchLeft sliderButton" onclick="sliderScrollLeft()"><</a>
-      <a class="switchRight sliderButton" onclick="sliderScrollRight()">></a>
+      <a class="switchLeft sliderButton" @click="sliderScrollLeft()"><</a>
+      <a class="switchRight sliderButton" @click="sliderScrollRight()">></a>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      <script src="carousel.js"></script>
+  
+
+ 
+  <script type="application/javascript" src="scripts/header.js"></script>
+  <script>
+    app.mount('#app')
+  </script> 
   </body>
+  
+  
 </html>
