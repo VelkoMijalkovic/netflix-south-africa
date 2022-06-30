@@ -7,6 +7,7 @@ const app = Vue.createApp({
       imagePadding: 20,
       scrollAmount: 0,
       
+      
     };
   },
   methods: {
@@ -206,6 +207,62 @@ const app = Vue.createApp({
         });
       
     },
+    showFantasy() {
+      const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
+
+      fetch(
+        "https://api.themoviedb.org/3/discover/movie?api_key=" +
+          API_KEY +
+          "&with_genres=14"
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            console.log("error");
+          }
+        })
+        .then((data) => {
+          result = data;
+          const sliders = document.getElementById("Fantasy");
+          result = result.results;
+          result.map(function (x, index) {
+            sliders.insertAdjacentHTML(
+              "beforeend",
+              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+            );
+          });
+        });
+      
+    },
+    showCrimeTV() {
+      const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
+
+      fetch(
+        "https://api.themoviedb.org/3/discover/tv?api_key=" +
+          API_KEY +
+          "&with_genres=80"
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            console.log("error");
+          }
+        })
+        .then((data) => {
+          result = data;
+          const sliders = document.getElementById("CrimeTV");
+          result = result.results;
+          result.map(function (x, index) {
+            sliders.insertAdjacentHTML(
+              "beforeend",
+              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+            );
+          });
+        });
+      
+    },
     sliderScrollLeft(genre) {
       let sliders = document.getElementById(genre);
       sliders.scrollTo({
@@ -236,6 +293,8 @@ const app = Vue.createApp({
     this.showHorror();
     this.showDocumentary();
     this.showMusical();
+    this.showFantasy();
+    this.showCrimeTV();
   },
 });
 

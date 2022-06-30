@@ -13,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
-    <title>Netflix</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <title>Netflix | Watch</title>
   </head>
   <body id="app">
     
@@ -98,7 +99,7 @@
   <a class="switchRight sliderButton" @click="sliderScrollRight('Horror')">></a>
 </div>
 <div class="carousel">
-  <h2>Documentary</h2>
+  <h2>Documentary Series</h2>
   <div class="carouselbox" id="Documentary">
     
   </div>
@@ -113,6 +114,22 @@
   <a class="switchLeft sliderButton" @click="sliderScrollLeft('Musical')"><</a>
   <a class="switchRight sliderButton" @click="sliderScrollRight('Musical')">></a>
 </div>  
+<div class="carousel">
+  <h2>Fantasy Movies</h2>
+  <div class="carouselbox" id="Fantasy">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('Fantasy')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('Fantasy')">></a>
+</div> 
+<div class="carousel">
+  <h2>Crime TV Shows</h2>
+  <div class="carouselbox" id="CrimeTV">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('CrimeTV')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('CrimeTV')">></a>
+</div>
 
  
   <script type="application/javascript" src="scripts/header.js"></script>
