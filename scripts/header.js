@@ -11,6 +11,34 @@ const app = Vue.createApp({
     };
   },
   methods: {
+    showUpcoming() {
+      const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
+
+      fetch(
+        "https://api.themoviedb.org/3/movie/upcoming?api_key=" +
+          API_KEY +
+          "&language=en-US&page=2"
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            console.log("error");
+          }
+        })
+        .then((data) => {
+          result = data;
+          const sliders = document.getElementById("Upcoming");
+          result = result.results;
+          result.map(function (x, index) {
+            sliders.insertAdjacentHTML(
+              "beforeend",
+              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+            );
+          });
+        });
+      
+    },
     showLatest() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
@@ -263,6 +291,90 @@ const app = Vue.createApp({
         });
       
     },
+    showThriller() {
+      const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
+
+      fetch(
+        "https://api.themoviedb.org/3/discover/movie?api_key=" +
+          API_KEY +
+          "&with_genres=53"
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            console.log("error");
+          }
+        })
+        .then((data) => {
+          result = data;
+          const sliders = document.getElementById("Thriller");
+          result = result.results;
+          result.map(function (x, index) {
+            sliders.insertAdjacentHTML(
+              "beforeend",
+              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+            );
+          });
+        });
+      
+    },
+    showDramaTV() {
+      const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
+
+      fetch(
+        "https://api.themoviedb.org/3/discover/tv?api_key=" +
+          API_KEY +
+          "&with_genres=18"
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            console.log("error");
+          }
+        })
+        .then((data) => {
+          result = data;
+          const sliders = document.getElementById("DramaTV");
+          result = result.results;
+          result.map(function (x, index) {
+            sliders.insertAdjacentHTML(
+              "beforeend",
+              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+            );
+          });
+        });
+      
+    },
+    showRealityTV() {
+      const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
+
+      fetch(
+        "https://api.themoviedb.org/3/discover/tv?api_key=" +
+          API_KEY +
+          "&with_genres=10764"
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            console.log("error");
+          }
+        })
+        .then((data) => {
+          result = data;
+          const sliders = document.getElementById("Reality");
+          result = result.results;
+          result.map(function (x, index) {
+            sliders.insertAdjacentHTML(
+              "beforeend",
+              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+            );
+          });
+        });
+      
+    },
     sliderScrollLeft(genre) {
       let sliders = document.getElementById(genre);
       sliders.scrollTo({
@@ -286,6 +398,7 @@ const app = Vue.createApp({
     },
   },
   created() {
+    this.showUpcoming();
     this.showLatest();
     this.showComedy();
     this.showLatestTV();
@@ -295,6 +408,9 @@ const app = Vue.createApp({
     this.showMusical();
     this.showFantasy();
     this.showCrimeTV();
+    this.showThriller();
+    this.showDramaTV();
+    this.showRealityTV();
   },
 });
 

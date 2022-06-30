@@ -57,7 +57,14 @@
       <img @click="isActive = !isActive" src="images/close.png" class="close">
       
     </div>
-   
+    <div class="carousel">
+      <h2>Coming Soon</h2>
+      <div class="carouselbox" id="Upcoming">
+        
+      </div>
+      <a class="switchLeft sliderButton" @click="sliderScrollLeft('Upcoming')"><</a>
+      <a class="switchRight sliderButton" @click="sliderScrollRight('Upcoming')">></a>
+  </div>
     <div class="carousel">
       <h2>New Arrival Movies</h2>
       <div class="carouselbox" id="Latest">
@@ -129,6 +136,30 @@
   </div>
   <a class="switchLeft sliderButton" @click="sliderScrollLeft('CrimeTV')"><</a>
   <a class="switchRight sliderButton" @click="sliderScrollRight('CrimeTV')">></a>
+</div>
+<div class="carousel">
+  <h2>Thriller Movies</h2>
+  <div class="carouselbox" id="Thriller">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('Thriller')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('Thriller')">></a>
+</div>
+<div class="carousel">
+  <h2>Drama TV Shows</h2>
+  <div class="carouselbox" id="DramaTV">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('DramaTV')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('DramaTV')">></a>
+</div>
+<div class="carousel">
+  <h2>Reality TV</h2>
+  <div class="carouselbox" id="Reality">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('Reality')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('Reality')">></a>
 </div>
 
  
