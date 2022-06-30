@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/header.css" />
     <meta charset="UTF-8">
@@ -55,14 +58,61 @@
     </div>
    
     <div class="carousel">
-      <h2>New Arrivals</h2>
-      <div class="carouselbox" id="latest">
+      <h2>New Arrival Movies</h2>
+      <div class="carouselbox" id="Latest">
         
       </div>
-      <a class="switchLeft sliderButton" @click="sliderScrollLeft()"><</a>
-      <a class="switchRight sliderButton" @click="sliderScrollRight()">></a>
+      <a class="switchLeft sliderButton" @click="sliderScrollLeft('Latest')"><</a>
+      <a class="switchRight sliderButton" @click="sliderScrollRight('Latest')">></a>
   </div>
-  
+  <div class="carousel">
+    <h2>Latest Netflix Original TV shows</h2>
+    <div class="carouselbox" id="LatestTV">
+      
+    </div>
+    <a class="switchLeft sliderButton" @click="sliderScrollLeft('LatestTV')"><</a>
+    <a class="switchRight sliderButton" @click="sliderScrollRight('LatestTV')">></a>
+</div>
+  <div class="carousel">
+    <h2>Comedy Movies</h2>
+    <div class="carouselbox" id="Comedy">
+      
+    </div>
+    <a class="switchLeft sliderButton" @click="sliderScrollLeft('Comedy')"><</a>
+    <a class="switchRight sliderButton" @click="sliderScrollRight('Comedy')">></a>
+</div>
+<div class="carousel">
+  <h2>For the Kids</h2>
+  <div class="carouselbox" id="Kids">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('Kids')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('Kids')">></a>
+</div>
+<div class="carousel">
+  <h2>Horror Movies</h2>
+  <div class="carouselbox" id="Horror">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('Horror')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('Horror')">></a>
+</div>
+<div class="carousel">
+  <h2>Documentary</h2>
+  <div class="carouselbox" id="Documentary">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('Documentary')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('Documentary')">></a>
+</div>
+<div class="carousel">
+  <h2>Musical Movies</h2>
+  <div class="carouselbox" id="Musical">
+    
+  </div>
+  <a class="switchLeft sliderButton" @click="sliderScrollLeft('Musical')"><</a>
+  <a class="switchRight sliderButton" @click="sliderScrollRight('Musical')">></a>
+</div>  
 
  
   <script type="application/javascript" src="scripts/header.js"></script>

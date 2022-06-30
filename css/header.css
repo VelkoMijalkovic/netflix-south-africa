@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif, arial;
+    font-family: 'Bebas Neue', cursive;
 }
 
 body {
@@ -50,6 +50,7 @@ h2 {
     text-decoration: none;
     font-weight: 500;
     letter-spacing: 1px;
+    font-size: 2em;
 }
 .navigation li:hover a {
     color: #de0611;
