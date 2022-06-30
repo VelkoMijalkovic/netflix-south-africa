@@ -118,7 +118,7 @@ h2 {
 }
 
 .movieTitle {
-    max-width: 250px;
+    max-width: 300px;
 }
 
 .banner .content h4 {
@@ -150,7 +150,7 @@ h2 {
 }
 
 .banner .content p {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 300;
     line-height: 1.5em;
     color: rgb(238, 255, 0);
