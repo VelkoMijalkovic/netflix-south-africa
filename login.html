@@ -17,14 +17,14 @@
 
             <div class="showcase-content">
                 <div class="formm">
-                    <form>
+                    <form action="profileselect.html">
                         <h1>Sign In</h1>
                         <div class="info">
-                            <input class="email" type="email" placeholder="Email or phone number"> <br>
-                            <input class="email" type="password" placeholder="Password">
+                            <input v-model="email" class="email" type="email" placeholder="Email or phone number"> <br>
+                            <input v-model="password" class="email" type="password" placeholder="Password">
                         </div>
                         <div class="btn">
-                            <button class="btn-primary" type="submit"><a href="./profileselect.html">Sign In</a></button>
+                            <button class="btn-primary" type="submit">Sign In</button>
                         </div>
                         <div class="help">
                             <div>
@@ -50,7 +50,7 @@
                         This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="#">Learn more.</a>
                         
                     </p>
-                    <p>Username: Admin <br> Password: Admin</p>
+                    <p>Username: Admin@admin <br> Password: Admin</p>
                 </div>
 
 
