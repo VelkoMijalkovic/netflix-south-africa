@@ -308,12 +308,13 @@ const app = Vue.createApp({
         })
         .then((data) => {
           result = data;
+          console.log(data);
           const sliders = document.getElementById("Thriller");
           result = result.results;
           result.map(function (x, index) {
             sliders.insertAdjacentHTML(
               "beforeend",
-              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+              `<img img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
             );
           });
         });
@@ -348,6 +349,7 @@ const app = Vue.createApp({
       
     },
     showRealityTV() {
+    
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
@@ -373,7 +375,8 @@ const app = Vue.createApp({
             );
           });
         });
-      
+       
+        
     },
     sliderScrollLeft(genre) {
       let sliders = document.getElementById(genre);
@@ -396,6 +399,7 @@ const app = Vue.createApp({
         });
       }
     },
+   
   },
   created() {
     this.showUpcoming();
