@@ -20,8 +20,8 @@
                     <form action="profileselect.html">
                         <h1>Sign In</h1>
                         <div class="info">
-                            <input v-model="email" class="email" type="email" placeholder="Email or phone number"> <br>
-                            <input @input="check" v-model="password" class="email" type="password" placeholder="Password">
+                            <input v-model="email" class="email" type="email" placeholder="admin@admin"> <br>
+                            <input @input="check" v-model="password" class="email" type="password" placeholder="admin">
                         </div>
                         <div class="btn">
                             <button class="btn-primary" type="submit" v-if="isDisabled" @click="errorcheck">Sign In</button>
@@ -39,7 +39,7 @@
     
                 </div>
                 
-                <p v-if="showError">{{error}}</p>
+              
                 <div class="signup">
                     <br>
                     <p>New to Netflix ?</p>

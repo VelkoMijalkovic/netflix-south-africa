@@ -4,8 +4,8 @@ const app = Vue.createApp({
         email : '',
         password: '',
         isDisabled: false,
-        error: 'wrong username/password',
-        showError: false,
+        
+        
 
        //check for admin admin to access
       }

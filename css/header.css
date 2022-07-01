@@ -328,7 +328,7 @@ h2 {
     max-width: 147px;
     height: 160px;
     background-size: cover;
-    background-color: lightgreen;
+    background-image: url(../images/loading.gif);
     margin: 5px 2px;
     cursor: pointer;
     transition: 0.5s ease;
