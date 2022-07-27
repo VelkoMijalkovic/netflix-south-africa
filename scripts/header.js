@@ -1,3 +1,31 @@
+let mylist = [];
+
+function addtolist(arr,number) {
+  const sliders = document.getElementById("myList");
+  mylist.push(arr[number]);
+  document.getElementById(number).disabled = true;
+  document.getElementById(number).style.display = "none";
+  console.log(mylist);
+    sliders.insertAdjacentHTML(
+      "beforeend",
+      `<div class="imagecont" id="${number}container">
+      <img class=" slider-img" src="https://image.tmdb.org/t/p/w185/${arr[number].poster_path}"/>
+      <button class="listadd" onclick="remove(${number})">remove from list</button>
+      </div>`
+    );
+  
+};
+function remove(number){
+  mylist.splice(number, 1);
+  console.log(mylist);
+  const name = number + 'container';
+  const element = document.getElementById(name);
+  document.getElementById(number).disabled = false;
+  document.getElementById(number).style.display = "block";
+  element.remove();
+}
+
+
 const app = Vue.createApp({
   data() {
     return {
@@ -6,7 +34,8 @@ const app = Vue.createApp({
       scrollPerClick: 250,
       imagePadding: 20,
       scrollAmount: 0,
-      
+      favorites: [],
+      listVisible: false,
       
     };
   },
@@ -322,7 +351,7 @@ const app = Vue.createApp({
     },
     showDramaTV() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
-
+      
       fetch(
         "https://api.themoviedb.org/3/discover/tv?api_key=" +
           API_KEY +
@@ -336,16 +365,20 @@ const app = Vue.createApp({
           }
         })
         .then((data) => {
-          result = data;
+          resultdramatv = data;
           const sliders = document.getElementById("DramaTV");
-          result = result.results;
-          result.map(function (x, index) {
+          resultdramatv = resultdramatv.results;
+          resultdramatv.map(function (x, index) {
             sliders.insertAdjacentHTML(
               "beforeend",
-              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+              `<div class="imagecont">
+              <img onclick="" class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>
+              <button class="listadd" id="${index}" onclick="addtolist(resultdramatv,${index})">add to list</button>
+              </div>`
             );
-          });
-        });
+          })
+        }
+        );
       
     },
     showRealityTV() {
@@ -365,13 +398,16 @@ const app = Vue.createApp({
           }
         })
         .then((data) => {
-          result = data;
+          resultreality = data;
           const sliders = document.getElementById("Reality");
-          result = result.results;
-          result.map(function (x, index) {
+          resultreality = resultreality.results;
+          resultreality.map(function (x, index) {
             sliders.insertAdjacentHTML(
               "beforeend",
-              `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>`
+              `<div class="imagecont">
+              <img onclick="mylist.push(resultreality[${index}])" class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${x.poster_path}"/>
+              <button class="listadd" onclick="addtolist()">add to list</button>
+              </div>`
             );
           });
         });
@@ -399,8 +435,9 @@ const app = Vue.createApp({
         });
       }
     },
-   
+    
   },
+  
   created() {
     this.showUpcoming();
     this.showLatest();
