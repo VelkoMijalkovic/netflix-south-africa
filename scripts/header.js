@@ -1,12 +1,26 @@
-let mylist = [];
+let mylist = JSON.parse(localStorage.getItem('userlist')) || [];
+
+function localStorageList(arr) {
+  const slider = 0;
+  const sliders = document.getElementById("myList");
+  for (let i = 0; i < arr.length; i++) {
+    sliders.insertAdjacentHTML(
+      "beforeend",
+      `<div class="imagecont" id="${i}container">
+        <img class=" slider-img" src="https://image.tmdb.org/t/p/w185/${arr[i].poster_path}"/>
+        <button class="listadd" onclick="removeStorage(${i},${slider})">remove from list</button>
+        </div>`);
+  };
+
+}
 
 function addtolist(arr, number, slider) {
   const sliders = document.getElementById("myList");
   mylist.push(arr[number]);
+  localStorage.setItem("userlist", JSON.stringify(mylist));
   fullstring = number.toString() + slider.toString();
   document.getElementById(fullstring).disabled = true;
   document.getElementById(fullstring).style.display = "none";
-  console.log(mylist);
   sliders.insertAdjacentHTML(
     "beforeend",
     `<div class="imagecont" id="${number}container">
@@ -14,18 +28,26 @@ function addtolist(arr, number, slider) {
       <button class="listadd" onclick="remove(${number},${slider})">remove from list</button>
       </div>`
   );
-}
+
+};
 function remove(number, slider) {
   mylist.splice(number, 1);
-  console.log(mylist);
-  const name = number + "container";
+  const name = number + 'container';
   const element = document.getElementById(name);
   fullstring = number.toString() + slider.toString();
   document.getElementById(fullstring).disabled = false;
   document.getElementById(fullstring).style.display = "block";
   element.remove();
+  localStorage.setItem("userlist", JSON.stringify(mylist));
 }
-
+function removeStorage(number, slider) {
+  mylist.splice(number, 1);
+  localStorage.setItem("userlist", JSON.stringify(mylist));
+  const name = number + 'container';
+  const element = document.getElementById(name);
+  fullstring = number.toString() + slider.toString();
+  element.remove();
+}
 const app = Vue.createApp({
   data() {
     return {
@@ -34,18 +56,25 @@ const app = Vue.createApp({
       scrollPerClick: 250,
       imagePadding: 20,
       scrollAmount: 0,
-      favorites: [],
       listVisible: false,
+
     };
   },
   methods: {
+    showUserList() {
+      this.listVisible = !this.listVisible;
+    },
+    importUserList() {
+      log();
+      localStorageList(mylist);
+    },
     showUpcoming() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/movie/upcoming?api_key=" +
-          API_KEY +
-          "&language=en-US&page=2"
+        API_KEY +
+        "&language=en-US&page=2"
       )
         .then((response) => {
           if (response.ok) {
@@ -69,14 +98,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showLatest() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
-          API_KEY +
-          "&sort_by=popularity.desc"
+        API_KEY +
+        "&sort_by=popularity.desc"
       )
         .then((response) => {
           if (response.ok) {
@@ -100,14 +130,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showLatestTV() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/tv?api_key=" +
-          API_KEY +
-          "&with_networks=213"
+        API_KEY +
+        "&with_networks=213"
       )
         .then((response) => {
           if (response.ok) {
@@ -131,14 +162,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showComedy() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
-          API_KEY +
-          "&with_genres=35"
+        API_KEY +
+        "&with_genres=35"
       )
         .then((response) => {
           if (response.ok) {
@@ -162,14 +194,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showKids() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/tv?api_key=" +
-          API_KEY +
-          "&with_genres=10762"
+        API_KEY +
+        "&with_genres=10762"
       )
         .then((response) => {
           if (response.ok) {
@@ -193,14 +226,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showHorror() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
-          API_KEY +
-          "&with_genres=27"
+        API_KEY +
+        "&with_genres=27"
       )
         .then((response) => {
           if (response.ok) {
@@ -224,14 +258,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showDocumentary() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/tv?api_key=" +
-          API_KEY +
-          "&with_genres=99"
+        API_KEY +
+        "&with_genres=99"
       )
         .then((response) => {
           if (response.ok) {
@@ -255,14 +290,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showMusical() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
-          API_KEY +
-          "&with_genres=10402"
+        API_KEY +
+        "&with_genres=10402"
       )
         .then((response) => {
           if (response.ok) {
@@ -286,14 +322,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showFantasy() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
-          API_KEY +
-          "&with_genres=14"
+        API_KEY +
+        "&with_genres=14"
       )
         .then((response) => {
           if (response.ok) {
@@ -317,14 +354,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showCrimeTV() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/tv?api_key=" +
-          API_KEY +
-          "&with_genres=80"
+        API_KEY +
+        "&with_genres=80"
       )
         .then((response) => {
           if (response.ok) {
@@ -348,14 +386,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showThriller() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
-          API_KEY +
-          "&with_genres=53"
+        API_KEY +
+        "&with_genres=53"
       )
         .then((response) => {
           if (response.ok) {
@@ -379,14 +418,15 @@ const app = Vue.createApp({
             );
           });
         });
+
     },
     showDramaTV() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/tv?api_key=" +
-          API_KEY +
-          "&with_genres=18"
+        API_KEY +
+        "&with_genres=18"
       )
         .then((response) => {
           if (response.ok) {
@@ -396,6 +436,7 @@ const app = Vue.createApp({
           }
         })
         .then((data) => {
+
           resultDramaTv = data;
           const slider = 12;
           const sliders = document.getElementById("DramaTV");
@@ -408,16 +449,19 @@ const app = Vue.createApp({
               <button class="listadd" id="${index}${slider}" onclick="addtolist(resultDramaTv,${index},${slider})">add to list</button>
               </div>`
             );
-          });
-        });
+          })
+        }
+        );
+
     },
     showRealityTV() {
+
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
         "https://api.themoviedb.org/3/discover/tv?api_key=" +
-          API_KEY +
-          "&with_genres=10764"
+        API_KEY +
+        "&with_genres=10764"
       )
         .then((response) => {
           if (response.ok) {
@@ -441,6 +485,8 @@ const app = Vue.createApp({
             );
           });
         });
+
+
     },
     sliderScrollLeft(genre) {
       let sliders = document.getElementById(genre);
@@ -463,9 +509,11 @@ const app = Vue.createApp({
         });
       }
     },
+
   },
 
   created() {
+
     this.showUpcoming();
     this.showLatest();
     this.showComedy();
@@ -479,5 +527,14 @@ const app = Vue.createApp({
     this.showThriller();
     this.showDramaTV();
     this.showRealityTV();
+
   },
+
 });
+
+
+
+
+
+
+
