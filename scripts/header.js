@@ -65,7 +65,6 @@ const app = Vue.createApp({
       this.listVisible = !this.listVisible;
     },
     importUserList() {
-      log();
       localStorageList(mylist);
     },
     showUpcoming() {
