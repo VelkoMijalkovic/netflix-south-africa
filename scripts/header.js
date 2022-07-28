@@ -1,4 +1,4 @@
-let mylist = JSON.parse(localStorage.getItem('userlist')) || [];
+let mylist = JSON.parse(localStorage.getItem("userlist")) || [];
 
 function localStorageList(arr) {
   const slider = 0;
@@ -9,9 +9,9 @@ function localStorageList(arr) {
       `<div class="imagecont" id="${i}container">
         <img class=" slider-img" src="https://image.tmdb.org/t/p/w185/${arr[i].poster_path}"/>
         <button class="listadd" onclick="removeStorage(${i},${slider})">remove from list</button>
-        </div>`);
-  };
-
+        </div>`
+    );
+  }
 }
 
 function addtolist(arr, number, slider) {
@@ -28,11 +28,10 @@ function addtolist(arr, number, slider) {
       <button class="listadd" onclick="remove(${number},${slider})">remove from list</button>
       </div>`
   );
-
-};
+}
 function remove(number, slider) {
   mylist.splice(number, 1);
-  const name = number + 'container';
+  const name = number + "container";
   const element = document.getElementById(name);
   fullstring = number.toString() + slider.toString();
   document.getElementById(fullstring).disabled = false;
@@ -43,7 +42,7 @@ function remove(number, slider) {
 function removeStorage(number, slider) {
   mylist.splice(number, 1);
   localStorage.setItem("userlist", JSON.stringify(mylist));
-  const name = number + 'container';
+  const name = number + "container";
   const element = document.getElementById(name);
   fullstring = number.toString() + slider.toString();
   element.remove();
@@ -57,7 +56,6 @@ const app = Vue.createApp({
       imagePadding: 20,
       scrollAmount: 0,
       listVisible: false,
-
     };
   },
   methods: {
@@ -97,11 +95,9 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showLatest() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
-
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
         API_KEY +
@@ -129,7 +125,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showLatestTV() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -161,7 +156,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showComedy() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -193,7 +187,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showKids() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -225,7 +218,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showHorror() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -257,7 +249,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showDocumentary() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -289,7 +280,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showMusical() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -321,7 +311,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showFantasy() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -353,7 +342,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showCrimeTV() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -385,7 +373,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showThriller() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -417,7 +404,6 @@ const app = Vue.createApp({
             );
           });
         });
-
     },
     showDramaTV() {
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
@@ -435,7 +421,6 @@ const app = Vue.createApp({
           }
         })
         .then((data) => {
-
           resultDramaTv = data;
           const slider = 12;
           const sliders = document.getElementById("DramaTV");
@@ -448,13 +433,10 @@ const app = Vue.createApp({
               <button class="listadd" id="${index}${slider}" onclick="addtolist(resultDramaTv,${index},${slider})">add to list</button>
               </div>`
             );
-          })
-        }
-        );
-
+          });
+        });
     },
     showRealityTV() {
-
       const API_KEY = "856bf84a340e6a4e0b3c55c48d17ae07";
 
       fetch(
@@ -484,8 +466,6 @@ const app = Vue.createApp({
             );
           });
         });
-
-
     },
     sliderScrollLeft(genre) {
       let sliders = document.getElementById(genre);
@@ -508,11 +488,9 @@ const app = Vue.createApp({
         });
       }
     },
-
   },
 
   created() {
-
     this.showUpcoming();
     this.showLatest();
     this.showComedy();
@@ -526,14 +504,5 @@ const app = Vue.createApp({
     this.showThriller();
     this.showDramaTV();
     this.showRealityTV();
-
   },
-
 });
-
-
-
-
-
-
-
