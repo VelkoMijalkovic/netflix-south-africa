@@ -13,7 +13,7 @@ You will most likely have to replace my tmdb api key with your own if you so wis
 
 Installation
 
-none
+None
 Vue Js CDN is included, this project did not make use of the Vue CLI so some workarounds had to be done as Vue JS does not support inserting Vue Directives dynamically
 without the use of components e.g @click will not be recognized when inserting HTML directly into the DOM so onclick (JS) was used instead
 
